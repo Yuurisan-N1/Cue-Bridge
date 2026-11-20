@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+keys.json
+session/
+*.session
+*.session-journal
+*.log
+bot.py
