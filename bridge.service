@@ -1,0 +1,21 @@
+[Unit]
+Description=Cue Bridge ([OI]-compatible gateway for the Cue Telegram agent)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=cue
+Group=cue
+WorkingDirectory=/opt/cue-bridge
+EnvironmentFile=/opt/cue-bridge/.env
+ExecStart=/opt/cue-bridge/.venv/bin/python /opt/cue-bridge/bot.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/cue-bridge.log
+StandardError=append:/var/log/cue-bridge.log
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
